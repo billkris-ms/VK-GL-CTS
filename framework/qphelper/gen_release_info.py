@@ -63,12 +63,12 @@ def parseArgs ():
 	args = parser.parse_args()
 
 	if (args.releaseName == None) != (args.releaseId == None):
-		print "Both --name and --id must be specified"
+		print ("Both --name and --id must be specified")
 		parser.print_help()
 		sys.exit(-1)
 
 	if (args.releaseName != None) == args.git:
-		print "Either --name and --id, or --git must be specified"
+		print ("Either --name and --id, or --git must be specified")
 		parser.print_help()
 		sys.exit(-1)
 
@@ -93,4 +93,4 @@ if __name__ == "__main__":
 	releaseInfo	= makeReleaseInfo(releaseName, releaseId)
 	dstFile		= args.out if args.out != None else defaultDstFile
 
-	writeFile(dstFile, releaseInfo)
+	writeFile(dstFile, releaseInfo.encode())
